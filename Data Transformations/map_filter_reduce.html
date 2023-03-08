@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shopping Cart</title>
+  </head>
+  <body>
+    <h1>Shopping Cart</h1>
+    <ul id="cart-items"></ul>
+
+    <h2>Items with Quantity of 2 or More:</h2>
+    <ul id="multiple-quantity-items"></ul>
+
+    <h2>Cart Total: <span id="cart-total"></span></h2>
+
+    <script>
+      const cart = [
+        { name: "Shirt", price: 25.99, quantity: 2 },
+        { name: "Pants", price: 39.99, quantity: 1 },
+        { name: "Shoes", price: 79.99, quantity: 1 },
+        { name: "Socks", price: 5.99, quantity: 4 },
+        { name: "Hat", price: 19.99, quantity: 1 }
+      ];
+
+      // Map the array of cart items to an array of strings representing the item and its total cost
+      const itemInfo = cart.map(item => `${item.quantity} ${item.name} - $${item.price * item.quantity}`);
+
+      // Filter the array of cart items to only include those with a quantity of 2 or more
+      const multipleQuantityItems = cart.filter(item => item.quantity >= 2);
+
+      // Reduce the array of cart items to a single value representing the total cost of all items
+      const cartTotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0).toFixed(2);
+
+
+      // Display the results in the HTML
+      const cartItemsList = document.getElementById("cart-items");
+      itemInfo.map(info => {
+        const li = document.createElement("li");
+        li.innerText = info;
+        cartItemsList.appendChild(li);
+      });
+
+      const multiQtyItemsList = document.getElementById("multiple-quantity-items");
+      multipleQuantityItems.map(item => {
+        const li = document.createElement("li");
+        li.innerText = `${item.quantity} ${item.name}`;
+        multiQtyItemsList.appendChild(li);
+      });
+
+      const cartTotalSpan = document.getElementById("cart-total");
+      cartTotalSpan.innerText = `$${cartTotal}`;
+
+      
+    </script>
+  </body>
+</html>

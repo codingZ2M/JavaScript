@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Arithmetic Operations</title>
+  </head>
+  <body>
+    <!--buttons for performing addition, subtraction, multiplication, and division-->
+    <h2>Arithmetic Operators</h2>
+    <button id="add">Add</button>
+    <button id="subtract">Subtract</button>
+    <button id="multiply">Multiply</button>
+    <button id="divide">Divide</button>
+    <br><br>
+    <input type="number" id="num1" placeholder="Enter a number">
+    <input type="number" id="num2" placeholder="Enter a number">
+    <br><br>
+    <p id="result"></p>
+
+ <!--buttons for Comparison -->
+    <h2>Comparison Operators</h2>
+    <button id="equal">Equal</button>
+    <button id="notEqual">Not Equal</button>
+    <button id="greaterThan">Greater Than</button>
+    <button id="lessThan">Less Than</button>
+    <br><br>
+    <input type="number" id="compNum1" placeholder="Enter a number">
+    <input type="number" id="compNum2" placeholder="Enter a number">
+    <br><br>
+    <p id="compResult"></p>
+
+<!--Paragraph to display Strings and Template Literals (ES6)-->
+    <p id="stringLiterals"></p>
+
+
+    <script>        
+      const addBtn = document.getElementById("add");
+      const subtractBtn = document.getElementById("subtract");
+      const multiplyBtn = document.getElementById("multiply");
+      const divideBtn = document.getElementById("divide");
+      const num1Input = document.getElementById("num1");
+      const num2Input = document.getElementById("num2");
+      const resultOutput = document.getElementById("result");
+      
+      // ES6 arrow functions to define the arithmetic operations 
+      const add = (num1, num2) => num1 + num2;
+      const subtract = (num1, num2) => num1 - num2;
+      const multiply = (num1, num2) => num1 * num2;
+      const divide = (num1, num2) => num1 / num2;
+      
+      // event listeners for each button that perform the selected operation
+      addBtn.addEventListener("click", () => {
+        const num1 = Number(num1Input.value);
+        const num2 = Number(num2Input.value);
+        const result = add(num1, num2);
+        resultOutput.textContent = `Result: ${result}`;
+      });
+      
+      subtractBtn.addEventListener("click", () => {
+        const num1 = Number(num1Input.value);
+        const num2 = Number(num2Input.value);
+        const result = subtract(num1, num2);
+        resultOutput.textContent = `Result: ${result}`;
+      });
+      
+      multiplyBtn.addEventListener("click", () => {
+        const num1 = Number(num1Input.value);
+        const num2 = Number(num2Input.value);
+        const result = multiply(num1, num2);
+        resultOutput.textContent = `Result: ${result}`;
+      });
+      
+      divideBtn.addEventListener("click", () => {
+        const num1 = Number(num1Input.value);
+        const num2 = Number(num2Input.value);
+        const result = divide(num1, num2);
+        resultOutput.textContent = `Result: ${result}`;
+      });
+
+
+
+      const equalBtn = document.getElementById("equal");
+      const notEqualBtn = document.getElementById("notEqual");
+      const greaterThanBtn = document.getElementById("greaterThan");
+      const lessThanBtn = document.getElementById("lessThan");
+      const compNum1Input = document.getElementById("compNum1");
+      const compNum2Input = document.getElementById("compNum2");
+      const compResultOutput = document.getElementById("compResult");
+
+
+       // ES6 arrow functions to define the arithmetic operations 
+       const equal = (num1, num2) => num1 === num2;
+     
+    // event listeners for each button that perform the selected operation
+    equalBtn.addEventListener("click", () => {
+        const num1 = Number(compNum1Input.value);
+        const num2 = Number(compNum2Input.value);
+        const result = equal(num1, num2);
+        compResultOutput.textContent = `Result: ${result}`;
+      });
+
+
+// Strings and Template Literals (ES6)
+      const firstName = 'Rick';
+      const job = 'Full Stack Web Developer';
+      const birthYear = 1989;
+      const year = 2022;
+
+     rick = ` I'm ${firstName}, a ${year - birthYear} year old ${job}!`;
+     stringLiterals.textContent =`${rick}`;
+
+
+    </script>
+  </body>
+</html>

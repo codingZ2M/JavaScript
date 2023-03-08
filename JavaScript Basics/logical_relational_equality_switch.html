@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Type and Age Checker</title>
+  </head>
+  <body>
+    <h1>User Type and Age Checker</h1>
+    <label for="userTypeInput">User Type:</label>
+    <input type="text" id="userTypeInput"><br><br>
+    <label for="userAgeInput">User Age:</label>
+    <input type="text" id="userAgeInput"><br><br>
+    <label for="isVerifiedInput">Is Verified:</label>
+    <input type="checkbox" id="isVerifiedInput"><br><br>
+    <button id="checkButton">Check</button><br><br>
+    <h1 id="verification"></h1>
+    <h2 id="resultOutput"></h2>
+
+    <script>
+      // Get the input elements from the HTML document
+      const userTypeInput = document.getElementById("userTypeInput");
+      const userAgeInput = document.getElementById("userAgeInput");
+      const isVerifiedInput = document.getElementById("isVerifiedInput");
+      const resultOutput = document.getElementById("resultOutput");
+
+      // Add an event listener to the button to check the user type and age
+      document.getElementById("checkButton").addEventListener("click", () => {
+        // Get the user type, age, and verification status values from the input elements
+        const userType = userTypeInput.value;
+        const userAge = Number(userAgeInput.value);
+        const isVerified = isVerifiedInput.checked;
+
+        
+//////////////////// The Conditional (Ternary) Operator //////////////////////
+        const message = isVerified  ? `Dear ${userType}, you are human` : "You are not human";
+        verification.innerHTML= message;
+
+     // Switch   
+        switch (true) {
+          case userType === "admin" && userAge >= 18 && isVerified:
+            resultOutput.innerHTML = "Welcome, verified admin!";
+            break;
+
+          case userType === "admin" && userAge >= 18 && !isVerified:
+            resultOutput.innerHTML = `Sorry! ${userType}, you need to be verified!`;
+            break;
+
+          case userType === "user" && userAge >= 18 && isVerified || userType === "guest" && userAge >= 18 && isVerified:
+            resultOutput.innerHTML = `Welcome, verified ${userType}!`;
+            break;
+            case userType === "user" && userAge >= 18 && !isVerified || userType === "guest" && userAge >= 18 && !isVerified:
+            resultOutput.innerHTML = `Sorry! ${userType}, you need to be verified!`;
+            break;
+      
+          case userType !== "admin" && userType !== "user" && userType !== "guest":
+            resultOutput.innerHTML = "Unknown user type!";
+            break;
+
+          default:
+            resultOutput.innerHTML = "Sorry, you are not old enough!";
+            break;
+        }
+
+       
+      });
+    </script>
+  </body>
+</html>

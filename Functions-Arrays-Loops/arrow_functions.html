@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <label for="origin">Origin:</label>
+<input type="text" id="origin" />
+
+<label for="destination">Destination:</label>
+<input type="text" id="destination" />
+
+<label for="departureDate">Departure Date:</label>
+<input type="date" id="departureDate" />
+
+<label for="returnDate">Return Date:</label>
+<input type="date" id="returnDate" />
+
+<button id="bookFlight">Book Flight</button>
+
+<p id="result"></p>
+
+<script>
+    const bookFlight = () => {
+      const origin = document.getElementById("origin").value;
+      const destination = document.getElementById("destination").value;
+      const departureDate = new Date(document.getElementById("departureDate").value);
+      const returnDate = new Date(document.getElementById("returnDate").value);
+
+      const formatDate = (date) => {
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;  // (January gives 0)
+        const day = date.getDate();
+        return `${year}-${month < 10 ? '0' : ''}${month}-${day < 10 ? '0' : ''}${day}`;
+      };
+
+      const validateInput = () => {
+        if (origin === "" || destination === "" || departureDate.toString() === "Invalid Date" || returnDate.toString() === "Invalid Date") {
+        return false;
+        }
+        return true;
+      };
+
+     const calculatePrice = () => {
+      const days = Math.ceil((returnDate.getTime() - departureDate.getTime()) / (1000 * 3600 * 24));
+      let price = 0;
+
+      if (days <= 7) {
+        price = 1000;
+      } else if (days <= 14) {
+        price = 800;
+      } else {
+        price = 500;
+      }
+      return price;
+    };
+
+    const displayResult = () => {
+      const result = document.getElementById("result");
+        if (validateInput()) {
+          const price = calculatePrice();
+          const formattedDepartureDate = formatDate(departureDate);
+          const formattedReturnDate = formatDate(returnDate);
+          result.innerHTML = `You have booked a flight from ${origin} to ${destination} departing on ${formattedDepartureDate} and returning on ${formattedReturnDate} for a total price of $${price}.`;
+        } else {
+          result.innerHTML = "Please enter valid details.";
+        }
+  };
+
+  displayResult();
+};
+
+
+document.getElementById("bookFlight").addEventListener("click", bookFlight);
+
+</script>
+
+</body>
+</html>

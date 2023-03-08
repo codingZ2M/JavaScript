@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Product Details</title>
+</head>
+<body>
+	<h1>Product Details</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody id="product-list">
+			
+		</tbody>
+	</table>
+
+	<script>
+		const products = [
+			{name: "Product 1", price: 10, description: "This is the first product"},
+			{name: "Product 2", price: 20, description: "This is the second product"},
+			{name: "Product 3", price: 30, description: "This is the third product"}
+		];
+
+		const displayProducts = (productArray) => {
+
+			const productList = document.getElementById("product-list");
+            
+			for (let i = 0; i < productArray.length; i++) {
+				const product = productArray[i];
+				const row = `
+					<tr>
+						<td>${product.name}</td>
+						<td>${product.price}</td>
+						<td>${product.description}</td>
+					</tr>
+				`;
+				productList.innerHTML += row;
+			}
+		};
+
+		displayProducts(products);
+	</script>
+</body>
+</html>
