@@ -22,25 +22,32 @@
       ];
 
       // Map the array of cart items to an array of strings representing the item and its total cost
-      const itemInfo = cart.map(item => `${item.quantity} ${item.name} - $${item.price * item.quantity}`);
+      const itemInfo = cart.map(
+                    (item) => `${item.quantity} ${item.name} - $${item.price * item.quantity}`
+                 );
 
       // Filter the array of cart items to only include those with a quantity of 2 or more
-      const multipleQuantityItems = cart.filter(item => item.quantity >= 2);
+      const multipleQuantityItems = cart.filter(
+                                                 (item) => item.quantity >= 2
+                                                );
 
       // Reduce the array of cart items to a single value representing the total cost of all items
-      const cartTotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0).toFixed(2);
+      const cartTotal = cart.reduce(
+                                      (acc, item) => acc + (item.price * item.quantity), 0
+                                    ).toFixed(2);
 
 
       // Display the results in the HTML
       const cartItemsList = document.getElementById("cart-items");
-      itemInfo.map(info => {
-        const li = document.createElement("li");
-        li.innerText = info;
-        cartItemsList.appendChild(li);
-      });
+      itemInfo.map(  (info) => {
+                            const li = document.createElement("li");
+                            li.innerText = info;
+                            cartItemsList.appendChild(li);
+                           }
+                  );
 
       const multiQtyItemsList = document.getElementById("multiple-quantity-items");
-      multipleQuantityItems.map(item => {
+      multipleQuantityItems.map(  item => {
         const li = document.createElement("li");
         li.innerText = `${item.quantity} ${item.name}`;
         multiQtyItemsList.appendChild(li);

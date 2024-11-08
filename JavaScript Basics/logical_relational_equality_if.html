@@ -24,22 +24,23 @@
 <p id="result"></p>
 
 <script>
-    const checkEligibility = () => {
-  const age = parseInt(document.getElementById("age").value);
-  const qualification = document.getElementById("qualification").value;
-  let result = "";
 
-  if (age >= 18 && qualification === "highSchool") {
-    result = "You are eligible for this job.";
-  } else if (age >= 21 && qualification === "bachelor") {
-    result = "You are eligible for this job.";
-  } else if (age >= 25 && qualification === "master") {
-    result = "You are eligible for this job.";
-  } else if (age >= 30 && qualification === "phd") {
-    result = "You are eligible for this job.";
-  } else {
-    result = "Sorry, you are not eligible for this program.";
-  }
+    const checkEligibility = () => {
+      const age = parseInt(document.getElementById("age").value);
+      const qualification = document.getElementById("qualification").value;
+      let result = "";
+
+      if (age >= 18 && qualification === "highSchool") {
+        result = "You are eligible for this job.";
+      } else if (age >= 21 && qualification === "bachelor") {
+        result = "You are eligible for this job.";
+      } else if (age >= 25 && qualification === "master") {
+        result = "You are eligible for this job.";
+      } else if (age >= 30 && qualification === "phd") {
+        result = "You are eligible for this job.";
+    }else {
+      result = "Sorry, you are not eligible for this program.";
+    }
 
   document.getElementById("result").textContent = result;
 };

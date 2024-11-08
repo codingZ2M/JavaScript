@@ -27,9 +27,10 @@ const restaurant = {
   us to more easily extract properties from objects without having to manually destructure each 
   property.
  */
-const order = ({ menu, ...restaurantProps }, itemName) => {
-  const item = menu.find(({ name }) => name === itemName);
-  if (!item) {
+const order = (  { menu, ...restaurantProps }, itemName) => {
+
+  const item = menu.find(  ( {name} ) => name === itemName );
+  if (!item) {  
     return `Sorry, we don't have ${itemName} on the menu.`;
   }
   // Object Destructuring
